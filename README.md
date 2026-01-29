@@ -55,5 +55,43 @@ java Main <input_script> <output_log>
 * **Precision**: All arithmetic reporting utilizes high-precision rounding (HALF_UP) for reliability.
 * **Validation**: Built-in semantic and state validation to ensure network integrity during rapid topology changes.
 
+## 🧪 Testing & Automation
+
+This project includes a custom Python test runner (`test_runner.py`) to automate compilation, execution, and output verification against the provided test cases.
+
+### Prerequisites
+* Python 3.x
+* Java Development Kit (JDK)
+
+### Directory Structure for Testing
+Ensure your Java source files are in the `src` folder and test cases are in the `test_cases` folder as follows:
+```text
+.
+├── src/ (Java files)
+├── test_cases/
+│   └── TypeX/ (inputs/*.txt & outputs/*.txt)
+└── test_runner.py
+```
+Running Tests
+You can run the full test suite or filter by specific criteria:
+
+```bash
+# Run all test cases
+python test_runner.py
+
+# Run only Type 2 cases (Routing)
+python test_runner.py --type type2
+
+# Benchmark mode (Measure time performance without output comparison)
+python test_runner.py --benchmark
+
+# Verbose mode (Show detailed diffs for failed tests)
+python test_runner.py --verbose
+```
+The script automatically handles:
+* ** Java compilation.
+* ** Line-ending normalization (CRLF/LF) for cross-platform compatibility.
+* ** 30-second timeout constraints per test case.
+
 ---
 *Developed by Melih Efe Sonmez.*
